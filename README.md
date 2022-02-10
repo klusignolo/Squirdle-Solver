@@ -1,6 +1,6 @@
 # Squirdle-Solver
 A simple Python utility for narrowing down guesses on Squirdle.
-#  ![](https://i.ibb.co/0j5mbBy/Squirdle.png) Squirdle Solver ![](https://i.ibb.co/0j5mbBy/Squirdle.png)
+#  ![](https://i.ibb.co/0j5mbBy/Squirdle.png)
 A simple Python utility for narrowing down guesses on [Squirdle](https://squirdle.fireblend.com/). Example usage:
 
 ![Squirdle Solver](https://i.ibb.co/DYmGPCF/Squirdle-Solver.gif)
