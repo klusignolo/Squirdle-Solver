@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter.ttk import Separator
 
 from numpy import var
-from squirdle_solver.models import Pokemon, PokemonGuess, UpDownEnum
+from squirdle_solver.models import Pokemon, PokemonGuess, TypeGuessEnum, UpDownEnum
 from squirdle_solver.search_utility import SearchUtility
 from squirdle_solver.utils.tkinter_utils import update_widget_text
 
@@ -23,12 +23,27 @@ class UpDownCorrectRadioFrame(tk.Frame):
     def get_value(self) -> UpDownEnum:
         return UpDownEnum(self.radio_var.get())
 
+class TypeRadioFrame(tk.Frame):
+    def __init__(self, master=None):
+        tk.Frame.__init__(self, master=master)
+        self.radio_var = tk.IntVar()
+        self.incorrect_radio = tk.Radiobutton(self, text="No", value=TypeGuessEnum.Incorrect.value, variable=self.radio_var)
+        self.out_of_radio = tk.Radiobutton(self, text="Out of Pos.", value=TypeGuessEnum.WrongPosition.value, variable=self.radio_var)
+        self.correct_radio = tk.Radiobutton(self, text="Yes", value=TypeGuessEnum.Correct.value, variable=self.radio_var)
+
+        self.incorrect_radio.grid(row=0, column=0)
+        self.out_of_radio.grid(row=0, column=1)
+        self.correct_radio.grid(row=0, column=2)
+
+        self.radio_var.set(0)
+
+    def get_value(self) -> TypeGuessEnum:
+        return TypeGuessEnum(self.radio_var.get())
+
 class PokemonGuessFrame(tk.Frame):
     pokemon: Pokemon = None
     def __init__(self, master=None):
         tk.Frame.__init__(self, master=master)
-        self.type_one_check_var = tk.BooleanVar(False)
-        self.type_two_check_var = tk.BooleanVar(False)
 
         pokemon_name_lbl = tk.Label(self, text="Pokemon:")
         generation_lbl = tk.Label(self, text="Generation:")
@@ -39,8 +54,8 @@ class PokemonGuessFrame(tk.Frame):
 
         self.pokemon_name_entry = tk.Entry(self, width=20)
         self.generation_radios = UpDownCorrectRadioFrame(self)
-        self.type_one_check = tk.Checkbutton(self, variable=self.type_one_check_var)
-        self.type_two_check = tk.Checkbutton(self, variable=self.type_two_check_var)
+        self.type_one_radios = TypeRadioFrame(self)
+        self.type_two_radios = TypeRadioFrame(self)
         self.height_radios = UpDownCorrectRadioFrame(self)
         self.weight_radios = UpDownCorrectRadioFrame(self)
 
@@ -55,9 +70,9 @@ class PokemonGuessFrame(tk.Frame):
         Separator(self, orient=tk.VERTICAL).grid(row=0, column=1, rowspan=2, sticky="ns", padx=2)
         self.generation_radios.grid(column=2, row=1)
         Separator(self, orient=tk.VERTICAL).grid(row=0, column=3, rowspan=2, sticky="ns", padx=2)
-        self.type_one_check.grid(column=4, row=1)
+        self.type_one_radios.grid(column=4, row=1)
         Separator(self, orient=tk.VERTICAL).grid(row=0, column=5, rowspan=2, sticky="ns", padx=2)
-        self.type_two_check.grid(column=6, row=1)
+        self.type_two_radios.grid(column=6, row=1)
         Separator(self, orient=tk.VERTICAL).grid(row=0, column=7, rowspan=2, sticky="ns", padx=2)
         self.height_radios.grid(column=8, row=1)
         Separator(self, orient=tk.VERTICAL).grid(row=0, column=9, rowspan=2, sticky="ns", padx=2)
@@ -76,8 +91,8 @@ class PokemonGuessFrame(tk.Frame):
         return PokemonGuess(
             pokemon=self.pokemon,
             generation=self.generation_radios.get_value(),
-            type_one=self.type_one_check_var.get(),
-            type_two=self.type_two_check_var.get(),
+            type_one=self.type_one_radios.get_value(),
+            type_two=self.type_two_radios.get_value(),
             height=self.height_radios.get_value(),
             weight=self.weight_radios.get_value()
         )

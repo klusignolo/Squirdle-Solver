@@ -19,11 +19,16 @@ class UpDownEnum(Enum):
     Down = 1
     Correct = 2
 
+class TypeGuessEnum(Enum):
+    Incorrect = 0
+    Correct = 1
+    WrongPosition = 2
+
 @dataclass
 class PokemonGuess:
     pokemon: Pokemon
     generation: UpDownEnum
-    type_one: bool
-    type_two: bool
+    type_one: TypeGuessEnum
+    type_two: TypeGuessEnum
     height: UpDownEnum
     weight: UpDownEnum

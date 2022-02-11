@@ -1,5 +1,5 @@
 from numpy import mean
-from squirdle_solver.models import Pokemon, PokemonGuess, UpDownEnum
+from squirdle_solver.models import Pokemon, PokemonGuess, TypeGuessEnum, UpDownEnum
 from squirdle_solver.utils.file_utils import file_path
 import statistics
 import math
@@ -43,15 +43,19 @@ class SearchUtility:
         else:
             filtered_list = [pokemon for pokemon in filtered_list if pokemon.generation == pokemon_guess.pokemon.generation]
 
-        if pokemon_guess.type_one:
-            filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_one == pokemon_guess.pokemon.type_one]
-        else:
+        if pokemon_guess.type_one == TypeGuessEnum.Incorrect:
             filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_one != pokemon_guess.pokemon.type_one]
-
-        if pokemon_guess.type_two:
-            filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_two == pokemon_guess.pokemon.type_two]
+        elif pokemon_guess.type_one == TypeGuessEnum.WrongPosition:
+            filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_two == pokemon_guess.pokemon.type_one]
         else:
+            filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_one == pokemon_guess.pokemon.type_one]
+
+        if pokemon_guess.type_two == TypeGuessEnum.Incorrect:
             filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_two != pokemon_guess.pokemon.type_two]
+        elif pokemon_guess.type_two == TypeGuessEnum.WrongPosition:
+            filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_one == pokemon_guess.pokemon.type_two]
+        else:
+            filtered_list = [pokemon for pokemon in filtered_list if pokemon.type_two == pokemon_guess.pokemon.type_two]
 
         if pokemon_guess.weight == UpDownEnum.Up:
             filtered_list = [pokemon for pokemon in filtered_list if pokemon.weight > pokemon_guess.pokemon.weight]
