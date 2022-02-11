@@ -135,7 +135,8 @@ class MainFrame(tk.Frame):
         instructions = "Welcome to Squirdle Solver!\n" + \
             "Yes. This is cheating.\n\n" + \
             "Enter previous Pokemon guesses below.\n" + \
-            "Then click Search to list possibilities."
+            "Then click Search to list possibilities.\n\n" + \
+            f"Suggested first guess:\n{SearchUtility.get_suggested_guess(SearchUtility.get_full_pokemon_list())}"
         update_widget_text(self.output_text_widget, instructions)
 
     def search(self):
@@ -147,9 +148,8 @@ class MainFrame(tk.Frame):
         output = ""
         if len(pokemon_list) > 0:
             suggested_guess = SearchUtility.get_suggested_guess(pokemon_list)
-            output += f"Possible Pokemon ({str(len(pokemon_list))}):\n"
             output += f"Suggested Guess: {suggested_guess}\n"
-            output += "-----------------------------------------------\n"
+            output += f"----------------------RESULTS ({str(len(pokemon_list))})----------------------\n"
             output += "\n".join([str(pokemon) for pokemon in pokemon_list])
         else:
             output = "Results: None"

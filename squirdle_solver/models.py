@@ -11,7 +11,7 @@ class Pokemon:
     weight: int
 
     def __str__(self) -> str:
-        type_str = self.type_one if self.type_one == self.type_two else f"{self.type_one}/{self.type_two}"
+        type_str = self.type_one if self.type_two == 'none' else f"{self.type_one}/{self.type_two}"
         return f"{self.name} | Gen {self.generation} | {type_str} | H: {self.height} | W: {self.weight}"
 
 class UpDownEnum(Enum):
