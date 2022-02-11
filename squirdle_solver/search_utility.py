@@ -1,5 +1,8 @@
+from numpy import mean
 from squirdle_solver.models import Pokemon, PokemonGuess, UpDownEnum
 from squirdle_solver.utils.file_utils import file_path
+import statistics
+import math
 import json
 
 class SearchUtility:
@@ -65,3 +68,19 @@ class SearchUtility:
             filtered_list = [pokemon for pokemon in filtered_list if pokemon.height == pokemon_guess.pokemon.height]
 
         return filtered_list
+    
+    @staticmethod
+    def get_suggested_guess(filtered_pokemon_list: "list[Pokemon]") -> Pokemon:
+        median_generation = math.floor(statistics.median([pokemon.generation for pokemon in filtered_pokemon_list]))
+        mean_weight = math.floor(statistics.mean([pokemon.weight for pokemon in filtered_pokemon_list]))
+        mean_height = math.floor(statistics.mean([pokemon.height for pokemon in filtered_pokemon_list]))
+        target_generation_pokemon = [pokemon for pokemon in filtered_pokemon_list if pokemon.generation == median_generation]
+        minimum_deviation = 1000000
+        best_match: Pokemon = None
+        for pokemon in target_generation_pokemon:
+            weight_deviation = abs(pokemon.weight - mean_weight)
+            height_deviation = abs(pokemon.height - mean_height)
+            deviation_sum = weight_deviation + height_deviation
+            if deviation_sum < minimum_deviation:
+                best_match = pokemon
+        return best_match

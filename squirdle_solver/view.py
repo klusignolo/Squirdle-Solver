@@ -146,7 +146,11 @@ class MainFrame(tk.Frame):
 
         output = ""
         if len(pokemon_list) > 0:
-            output += f"Possible Pokemon ({str(len(pokemon_list))}):\n" + "\n".join([str(pokemon) for pokemon in pokemon_list])
+            suggested_guess = SearchUtility.get_suggested_guess(pokemon_list)
+            output += f"Possible Pokemon ({str(len(pokemon_list))}):\n"
+            output += f"Suggested Guess: {suggested_guess}\n"
+            output += "-----------------------------------------------\n"
+            output += "\n".join([str(pokemon) for pokemon in pokemon_list])
         else:
             output = "Results: None"
         update_widget_text(self.output_text_widget, output)
