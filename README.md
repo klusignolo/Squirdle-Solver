@@ -7,7 +7,11 @@ A simple Python utility for narrowing down guesses on [Squirdle](https://squirdl
 
 Yes, this is technically cheating. But hey, who wants to lose a streak when it comes down to the 6/6 wire?
 
-## Building
+## Compiling
+
+Everything should run out of the box by running main.py. Instructions below for compiling into an executable.
+
+## Building Executable
 
 If you'd like to build the standalone executable, I've included the PyInstaller .spec file to accomplish that for you. To build a new .exe, open a command prompt window in the project directory and run the following:
 
