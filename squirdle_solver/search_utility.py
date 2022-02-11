@@ -4,7 +4,7 @@ import json
 
 class SearchUtility:
     @staticmethod
-    def search(pokemon_guesses: list[PokemonGuess]) -> list[Pokemon]:
+    def search(pokemon_guesses: "list[PokemonGuess]") -> "list[Pokemon]":
         """Returns a list of matching Pokemon"""
         filtered_pokemon = SearchUtility.get_full_pokemon_list()
         for pokemon_guess in pokemon_guesses:
@@ -15,7 +15,7 @@ class SearchUtility:
         return filtered_pokemon
     
     @staticmethod
-    def get_full_pokemon_list() -> list[Pokemon]:
+    def get_full_pokemon_list() -> "list[Pokemon]":
         filepath = file_path('pokemon.json')
         file = open(filepath)
         pokemon_list = json.loads(file.read())
@@ -31,7 +31,7 @@ class SearchUtility:
             return None
 
     @staticmethod
-    def filter_pokemon_list_by_guess(list_to_filter: list[Pokemon], pokemon_guess: PokemonGuess) -> list[Pokemon]:
+    def filter_pokemon_list_by_guess(list_to_filter: "list[Pokemon]", pokemon_guess: PokemonGuess) -> "list[Pokemon]":
         filtered_list = list_to_filter.copy()
         if pokemon_guess.generation == UpDownEnum.Up:
             filtered_list = [pokemon for pokemon in filtered_list if pokemon.generation > pokemon_guess.pokemon.generation]

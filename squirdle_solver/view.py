@@ -83,7 +83,7 @@ class PokemonGuessFrame(tk.Frame):
         )
 
 class MainFrame(tk.Frame):
-    pokemon_guess_frames: list[PokemonGuessFrame]
+    pokemon_guess_frames: "list[PokemonGuessFrame]"
     def __init__(self, master):
         tk.Frame.__init__(self, master=master)
         self.scrollbar = tk.Scrollbar(self)
