@@ -1,7 +1,7 @@
 # Squirdle-Solver
 A simple Python utility for narrowing down guesses on Squirdle.
 #  ![](https://i.ibb.co/0j5mbBy/Squirdle.png)
-A simple Python utility for narrowing down guesses on [Squirdle](https://squirdle.fireblend.com/). Example usage:
+A simple Python utility for narrowing down guesses on [Squirdle](https://squirdle.fireblend.com/daily). Example usage:
 
 ![Squirdle Solver](https://i.ibb.co/DYmGPCF/Squirdle-Solver.gif)
 
