@@ -895,5 +895,12 @@
 {"name": "Regidrago", "generation": 8, "type_one": "dragon", "type_two": "none", "height": 21, "weight": 2000},
 {"name": "Glastrier", "generation": 8, "type_one": "ice", "type_two": "none", "height": 22, "weight": 8000},
 {"name": "Spectrier", "generation": 8, "type_one": "ghost", "type_two": "none", "height": 20, "weight": 445},
-{"name": "Calyrex", "generation": 8, "type_one": "psychic", "type_two": "grass", "height": 11, "weight": 77}
+{"name": "Calyrex", "generation": 8, "type_one": "psychic", "type_two": "grass", "height": 11, "weight": 77},
+{"name": "Wyrdeer", "generation": 8, "type_one": "normal", "type_two": "psychic", "height": 18, "weight": 951},
+{"name": "Kleavor", "generation": 8, "type_one": "bug", "type_two": "rock", "height": 18, "weight": 890},
+{"name": "Ursaluna", "generation": 8, "type_one": "ground", "type_two": "normal", "height": 24, "weight": 2900},
+{"name": "Basculegion", "generation": 8, "type_one": "water", "type_two": "ghost", "height": 30, "weight": 1100},
+{"name": "Sneasler", "generation": 8, "type_one": "fighting", "type_two": "poison", "height": 13, "weight": 430},
+{"name": "Overqwil", "generation": 8, "type_one": "dark", "type_two": "poison", "height": 25, "weight": 605},
+{"name": "Enamorus", "generation": 8, "type_one": "fairy", "type_two": "flying", "height": 16, "weight": 480}
 ]
