@@ -22,7 +22,7 @@ When PyInstaller finishes running, the new .exe file will be located in /dist. Y
 
 
 ## Contributing
-Contributions are welcome! This is already pretty light weight. If there are any words that need to be removed from five_letter_words.txt, just open a PR and I'll approve.
+Contributions are welcome! This is already pretty light weight. If I missed out on any Pokemon or made a typo, feel free to open a PR.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
